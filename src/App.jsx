@@ -1,12 +1,7 @@
-import "./App.css";
-import LoginPage from "./components/LoginPage";
+import LoginRegisterWrapper from "./components/LoginRegisterWrapper";
 
 function App() {
-  return (
-    <>
-      <LoginPage />
-    </>
-  );
+  return <LoginRegisterWrapper />;
 }
 
 export default App;

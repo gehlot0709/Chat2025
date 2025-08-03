@@ -1,23 +1,9 @@
-import { useState, useEffect, useRef } from "react";
-import { animate } from "motion";
+import { useState } from "react";
 import "../css/loginPage.css";
 
-export default function LoginPage() {
+export default function LoginPage({ onSwitch }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const containerRef = useRef(null);
-
-  const transition = {
-    duration: 2,
-    delay: 0,
-    ease: [0, 0.71, 0.2, 1.01],
-  };
-
-  useEffect(() => {
-    if (containerRef.current) {
-      animate(containerRef.current, { y: [-160, 0] }, transition);
-    }
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,12 +17,9 @@ export default function LoginPage() {
   return (
     <section className="Login-page">
       <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div
-          ref={containerRef}
-          className="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl shadow-2xl"
-        >
+        <div className="w-full max-w-md bg-white p-8 sm:p-10 rounded-3xl shadow-2xl">
           <h2 className="text-3xl font-bold text-center font-serif text-blue-800 mb-6">
-            Chatbox
+            Login
           </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -77,16 +60,18 @@ export default function LoginPage() {
           </form>
           <p className="text-sm text-center text-gray-600 mt-4">
             Don’t have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Sign up
-            </a>
+            <button
+              onClick={onSwitch}
+              className="text-blue-600 hover:underline"
+            >
+              Register
+            </button>
           </p>
         </div>
-
-        {/* 🔽 Footer with creator name */}
         <p className="mt-8 text-xs text-gray-500 text-center">
           &copy; {new Date().getFullYear()} Chatbox. Created by{" "}
-          <span className="font-medium text-blue-700">Pratham Gehlot</span>. All rights reserved.
+          <span className="font-medium text-blue-700">Pratham Gehlot</span>. All
+          rights reserved.
         </p>
       </div>
     </section>
